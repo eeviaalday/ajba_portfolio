@@ -1,36 +1,36 @@
 <section id="projects" class="projects section">
     <div class="container">
-        <span class="section-label reveal">Work</span>
-        <h2 class="section-heading reveal">Projects Showcase</h2>
-        <p class="section-sub reveal">A selection of management systems I have developed as part of my coursework.</p>
+        <div class="projects-header">
+            <span class="section-label reveal">Work</span>
+            <h2 class="section-heading reveal">I Make Incredible<br><span class="accent">Projects</span></h2>
+            <p class="section-sub reveal">A selection of management systems I have developed as part of my coursework.</p>
+        </div>
 
-        <div class="project-grid">
-            @foreach($portfolio['projects'] as $index => $project)
-            <div class="project-card glass reveal" style="transition-delay:{{ $index * 0.12 }}s">
-                <div class="project-cover">
-                    <span class="project-num">PROJECT {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
-                    <img src="{{ asset($project['cover']) }}" alt="{{ $project['title'] }} — {{ $project['screenshots'][0]['label'] }} screen">
-                    <div class="project-cover-overlay">
-                        <button class="btn btn-primary project-gallery-btn"
-                            data-project="{{ $index }}"
-                            aria-label="View {{ $project['title'] }} gallery">
-                            <i class="fas fa-images"></i> View Gallery
-                        </button>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">{{ $project['title'] }}</h3>
-                    <span class="project-lang">{{ $project['language'] }}</span>
-                    <p class="project-desc">{{ $project['description'] }}</p>
-                    <button class="btn btn-ghost project-gallery-btn"
+        @foreach($portfolio['projects'] as $index => $project)
+        <div class="project-feature reveal" style="transition-delay:{{ $index * 0.1 }}s">
+            <div class="project-feature-info">
+                <div class="project-num">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</div>
+                <h3 class="project-title">{{ $project['title'] }}</h3>
+                <span class="project-lang">{{ $project['language'] }}</span>
+                <p class="project-desc">{{ $project['description'] }}</p>
+                <button class="btn btn-primary project-gallery-btn"
+                    data-project="{{ $index }}"
+                    aria-label="View {{ $project['title'] }} gallery">
+                    <i class="fas fa-images"></i> View Gallery
+                </button>
+            </div>
+            <div class="project-img-wrap" data-project="{{ $index }}">
+                <img src="{{ asset($project['cover']) }}" alt="{{ $project['title'] }} — {{ $project['screenshots'][0]['label'] }} screen">
+                <div class="project-img-overlay">
+                    <button class="btn btn-primary project-gallery-btn"
                         data-project="{{ $index }}"
                         aria-label="View {{ $project['title'] }} gallery">
-                        <i class="fas fa-expand"></i> View Project Gallery
+                        <i class="fas fa-expand"></i> View Gallery
                     </button>
                 </div>
             </div>
-            @endforeach
         </div>
+        @endforeach
     </div>
 </section>
 

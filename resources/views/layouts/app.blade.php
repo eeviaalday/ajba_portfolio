@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" data-accent="lavender">
+<html lang="en" data-accent="lavender">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Portfolio')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
 </head>
@@ -38,9 +38,6 @@
                         <button class="palette-opt" data-color="mint" title="Mint"><span class="palette-swatch" style="background:hsl(160,50%,60%)"></span>Mint</button>
                     </div>
                 </div>
-                <button class="theme-icon-btn" id="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle dark mode">
-                    <i class="fas fa-sun" id="theme-icon"></i>
-                </button>
                 <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
                 </button>

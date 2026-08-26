@@ -19,6 +19,43 @@ Route::get('/', function () {
         ],
         'bio' => 'Adaptable and goal-oriented fourth-year Bachelor of Science in Information Technology (BSIT) student with strong leadership, communication, and problem-solving skills. Experienced as a Technical Instructor with a background in video editing, computer troubleshooting, and network configuration.',
         'bio_extra' => 'Eager to apply technical knowledge, learn from industry professionals, and contribute effectively during On-the-Job Training.',
+        'experience' => [
+            [
+                'title' => 'Instructor / Trainer',
+                'company' => 'OCTA Information Technology Services',
+                'year' => '2025 - Present',
+                'type' => 'Part-Time',
+                'responsibilities' => [
+                    'Deliver engaging lessons on basic computer skills, including computer fundamentals and Microsoft Office applications.',
+                    'Guide students through hands-on activities and practical exercises to build confidence in using computers and essential software.',
+                    'Assess student progress, provide constructive feedback, and offer individualized support to improve technical skills.',
+                ],
+            ],
+            [
+                'title' => 'Special Program for Employment of Students (SPES)',
+                'company' => 'Abra Provincial Hospital - Administrative Office',
+                'year' => 'April - June 2026',
+                'type' => '',
+                'responsibilities' => [
+                    'Assisted in sorting, organizing, and maintaining employee records to ensure accurate and up-to-date documentation.',
+                    'Updated and verified personnel files, ensuring completeness, accuracy, and compliance with office record-keeping procedures.',
+                    'Supported leave application processing, Daily Time Record (DTR) monitoring, and payroll documentation.',
+                    'Assisted in the preparation and transmittal of hospital e-claims and other administrative documents.',
+                    'Performed data verification, document filing, and general administrative tasks while maintaining confidentiality and organization of records.',
+                ],
+            ],
+            [
+                'title' => 'Computer Systems Servicing (CSS) NC II Trainer',
+                'company' => 'DCCP - Bangued, TESDA Accredited Center',
+                'year' => 'Feb - March 2026',
+                'type' => '',
+                'responsibilities' => [
+                    'Facilitated intensive training for Computer Systems Servicing (CSS) NC II certification, covering computer assembly/disassembly, operating system installation, networking, and server configuration.',
+                    'Prepared students thoroughly for national assessment standards, resulting in high passing rate.',
+                    'Managed and maintained laboratory equipment, ensuring a safe and efficient practical learning environment.',
+                ],
+            ],
+        ],
         'education' => [
             [
                 'school' => 'Data Center College of the Philippines - Bangued',

@@ -1,12 +1,12 @@
 /* ============================================================
-   MAIN.JS — Digital Constellation Portfolio
+   MAIN.JS — Editorial Portfolio
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
 
   const html = document.documentElement;
 
   /* --------------------------------------------------------
-     PROJECT GALLERY MODAL (defined early for shared keydown)
+     PROJECT GALLERY MODAL
      -------------------------------------------------------- */
   const projects = window.__projects || [];
   const galleryModal    = document.getElementById('gallery-modal');
@@ -72,30 +72,135 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* --------------------------------------------------------
-     LIGHT/DARK MODE
+     CERTIFICATE CAROUSEL
      -------------------------------------------------------- */
-  const themeToggle = document.querySelector('#theme-toggle');
-  const themeIcon   = document.querySelector('#theme-icon');
-  const storedTheme = localStorage.getItem('theme') || 'dark';
-  applyTheme(storedTheme);
+  const certSlides   = document.getElementById('cert-slides');
+  const certCurrent  = document.getElementById('cert-current');
+  const certPrevBtn  = document.getElementById('cert-prev');
+  const certNextBtn  = document.getElementById('cert-next');
+  const certDots     = document.querySelectorAll('.cert-dot');
+  const certs        = window.__certificates || [];
+  let certIndex      = 0;
+  const certTotal    = certs.length;
 
-  themeToggle?.addEventListener('click', () => {
-    const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
-    localStorage.setItem('theme', next);
+  function updateCertCarousel() {
+    if (!certSlides) return;
+    certSlides.style.transform = `translateX(-${certIndex * 100}%)`;
+    if (certCurrent) certCurrent.textContent = String(certIndex + 1).padStart(2, '0');
+    certDots.forEach((d, i) => d.classList.toggle('active', i === certIndex));
+  }
+
+  certPrevBtn?.addEventListener('click', () => {
+    certIndex = (certIndex - 1 + certTotal) % certTotal;
+    updateCertCarousel();
   });
 
-  function applyTheme(mode) {
-    html.dataset.theme = mode;
-    if (themeIcon) {
-      themeIcon.className = mode === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-      themeToggle.setAttribute('aria-label', mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-      themeToggle.setAttribute('title', mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  certNextBtn?.addEventListener('click', () => {
+    certIndex = (certIndex + 1) % certTotal;
+    updateCertCarousel();
+  });
+
+  certDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      certIndex = parseInt(dot.dataset.index, 10);
+      updateCertCarousel();
+    });
+  });
+
+  // Touch/swipe for carousel
+  let certTouchStartX = 0;
+  const certCarousel = document.getElementById('cert-carousel');
+  certCarousel?.addEventListener('touchstart', (e) => {
+    certTouchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  certCarousel?.addEventListener('touchend', (e) => {
+    const diff = certTouchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) certNextBtn?.click();
+      else certPrevBtn?.click();
+    }
+  }, { passive: true });
+
+  /* --------------------------------------------------------
+     CERTIFICATE VIEWER MODAL
+     -------------------------------------------------------- */
+  const certViewer     = document.getElementById('cert-viewer');
+  const certBackdrop   = document.getElementById('cert-viewer-backdrop');
+  const certClose      = document.getElementById('cert-viewer-close');
+  const certVPrev      = document.getElementById('cert-viewer-prev');
+  const certVNext      = document.getElementById('cert-viewer-next');
+  const certVImage     = document.getElementById('cert-viewer-image');
+  const certVTitle     = document.getElementById('cert-viewer-title');
+  const certVIssuer    = document.getElementById('cert-viewer-issuer');
+  const certVLabel     = document.getElementById('cert-viewer-label');
+  const certVCounter   = document.getElementById('cert-viewer-counter');
+  const certVPdf       = document.getElementById('cert-viewer-pdf');
+
+  let certViewIdx = 0;
+
+  function openCertViewer(index) {
+    certViewIdx = index;
+    updateCertViewer();
+    certViewer.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCertViewer() {
+    certViewer.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  function updateCertViewer() {
+    const cert = certs[certViewIdx];
+    if (!cert) return;
+    certVImage.src = window.__assetBase + cert.image;
+    certVImage.alt = cert.title + ' certificate';
+    certVTitle.textContent = cert.title;
+    certVIssuer.textContent = cert.issuer;
+    certVLabel.textContent = cert.title;
+    certVCounter.textContent = (certViewIdx + 1) + ' / ' + certTotal;
+    if (cert.pdf) {
+      certVPdf.href = window.__assetBase + cert.pdf;
+      certVPdf.style.display = '';
+    } else {
+      certVPdf.style.display = 'none';
     }
   }
 
+  document.querySelectorAll('.cert-card').forEach(card => {
+    card.addEventListener('click', () => {
+      openCertViewer(parseInt(card.dataset.cert, 10));
+    });
+  });
+
+  certClose?.addEventListener('click', closeCertViewer);
+  certBackdrop?.addEventListener('click', closeCertViewer);
+  document.querySelector('.cert-viewer-content')?.addEventListener('click', (e) => e.stopPropagation());
+
+  certVPrev?.addEventListener('click', () => {
+    certViewIdx = (certViewIdx - 1 + certTotal) % certTotal;
+    updateCertViewer();
+  });
+
+  certVNext?.addEventListener('click', () => {
+    certViewIdx = (certViewIdx + 1) % certTotal;
+    updateCertViewer();
+  });
+
+  let certViewerTouchX = 0;
+  certViewer?.addEventListener('touchstart', (e) => {
+    certViewerTouchX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  certViewer?.addEventListener('touchend', (e) => {
+    const diff = certViewerTouchX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) certVNext?.click();
+      else certVPrev?.click();
+    }
+  }, { passive: true });
+
   /* --------------------------------------------------------
-     ACCENT COLOR THEME (palette popover)
+     ACCENT COLOR THEME
      -------------------------------------------------------- */
   const paletteBtn   = document.querySelector('#palette-btn');
   const palettePop   = document.querySelector('#palette-popover');
@@ -130,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------------
-     KEYBOARD: Escape closes palette + gallery
+     KEYBOARD
      -------------------------------------------------------- */
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -143,8 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'ArrowRight') galleryNext?.click();
     }
     if (certViewer && !certViewer.hidden) {
-      if (e.key === 'ArrowLeft')  certPrev?.click();
-      if (e.key === 'ArrowRight') certNext?.click();
+      if (e.key === 'ArrowLeft')  certVPrev?.click();
+      if (e.key === 'ArrowRight') certVNext?.click();
     }
   });
 
@@ -160,85 +265,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (Math.abs(diff) > 50) {
       if (diff > 0) galleryNext?.click();
       else galleryPrev?.click();
-    }
-  }, { passive: true });
-
-  /* --------------------------------------------------------
-     CERTIFICATE VIEWER
-     -------------------------------------------------------- */
-  const certs          = window.__certificates || [];
-  const certViewer     = document.getElementById('cert-viewer');
-  const certBackdrop   = document.getElementById('cert-viewer-backdrop');
-  const certClose      = document.getElementById('cert-viewer-close');
-  const certPrev       = document.getElementById('cert-viewer-prev');
-  const certNext       = document.getElementById('cert-viewer-next');
-  const certImage      = document.getElementById('cert-viewer-image');
-  const certTitle      = document.getElementById('cert-viewer-title');
-  const certIssuer     = document.getElementById('cert-viewer-issuer');
-  const certLabel      = document.getElementById('cert-viewer-label');
-  const certCounter    = document.getElementById('cert-viewer-counter');
-  const certPdf        = document.getElementById('cert-viewer-pdf');
-
-  let certCurrentIdx = 0;
-
-  function openCertViewer(index) {
-    certCurrentIdx = index;
-    updateCertViewer();
-    certViewer.hidden = false;
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeCertViewer() {
-    certViewer.hidden = true;
-    document.body.style.overflow = '';
-  }
-
-  function updateCertViewer() {
-    const cert = certs[certCurrentIdx];
-    if (!cert) return;
-    certImage.src = window.__assetBase + cert.image;
-    certImage.alt = cert.title + ' certificate';
-    certTitle.textContent = cert.title;
-    certIssuer.textContent = cert.issuer;
-    certLabel.textContent = cert.title;
-    certCounter.textContent = (certCurrentIdx + 1) + ' / ' + certs.length;
-    if (cert.pdf) {
-      certPdf.href = window.__assetBase + cert.pdf;
-      certPdf.style.display = '';
-    } else {
-      certPdf.style.display = 'none';
-    }
-  }
-
-  document.querySelectorAll('.cert-artifact').forEach(artifact => {
-    artifact.addEventListener('click', () => {
-      openCertViewer(parseInt(artifact.dataset.cert, 10));
-    });
-  });
-
-  certClose?.addEventListener('click', closeCertViewer);
-  certBackdrop?.addEventListener('click', closeCertViewer);
-  document.querySelector('.cert-viewer-content')?.addEventListener('click', (e) => e.stopPropagation());
-
-  certPrev?.addEventListener('click', () => {
-    certCurrentIdx = (certCurrentIdx - 1 + certs.length) % certs.length;
-    updateCertViewer();
-  });
-
-  certNext?.addEventListener('click', () => {
-    certCurrentIdx = (certCurrentIdx + 1) % certs.length;
-    updateCertViewer();
-  });
-
-  let certTouchStartX = 0;
-  certViewer?.addEventListener('touchstart', (e) => {
-    certTouchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-  certViewer?.addEventListener('touchend', (e) => {
-    const diff = certTouchStartX - e.changedTouches[0].screenX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) certNext?.click();
-      else certPrev?.click();
     }
   }, { passive: true });
 
@@ -305,5 +331,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.12 });
 
   revealEls.forEach(el => revealObs.observe(el));
+
+  /* --------------------------------------------------------
+     JOURNEY TABS
+     -------------------------------------------------------- */
+  const journeyTabs = document.querySelectorAll('.journey-tab');
+  const journeyPanels = document.querySelectorAll('.journey-content');
+  journeyTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      journeyTabs.forEach(t => t.classList.remove('journey-tab--active'));
+      tab.classList.add('journey-tab--active');
+      const target = tab.dataset.tab;
+      journeyPanels.forEach(panel => {
+        const isActive = panel.dataset.content === target;
+        panel.classList.toggle('journey-content--active', isActive);
+        if (isActive) {
+          panel.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
+        }
+      });
+    });
+  });
 
 });
