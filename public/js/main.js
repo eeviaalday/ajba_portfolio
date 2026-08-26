@@ -136,10 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') {
       palettePop?.classList.remove('open');
       if (galleryModal && !galleryModal.hidden) closeGallery();
+      if (certViewer && !certViewer.hidden) closeCertViewer();
     }
     if (galleryModal && !galleryModal.hidden) {
       if (e.key === 'ArrowLeft')  galleryPrev?.click();
       if (e.key === 'ArrowRight') galleryNext?.click();
+    }
+    if (certViewer && !certViewer.hidden) {
+      if (e.key === 'ArrowLeft')  certPrev?.click();
+      if (e.key === 'ArrowRight') certNext?.click();
     }
   });
 
@@ -155,6 +160,85 @@ document.addEventListener('DOMContentLoaded', () => {
     if (Math.abs(diff) > 50) {
       if (diff > 0) galleryNext?.click();
       else galleryPrev?.click();
+    }
+  }, { passive: true });
+
+  /* --------------------------------------------------------
+     CERTIFICATE VIEWER
+     -------------------------------------------------------- */
+  const certs          = window.__certificates || [];
+  const certViewer     = document.getElementById('cert-viewer');
+  const certBackdrop   = document.getElementById('cert-viewer-backdrop');
+  const certClose      = document.getElementById('cert-viewer-close');
+  const certPrev       = document.getElementById('cert-viewer-prev');
+  const certNext       = document.getElementById('cert-viewer-next');
+  const certImage      = document.getElementById('cert-viewer-image');
+  const certTitle      = document.getElementById('cert-viewer-title');
+  const certIssuer     = document.getElementById('cert-viewer-issuer');
+  const certLabel      = document.getElementById('cert-viewer-label');
+  const certCounter    = document.getElementById('cert-viewer-counter');
+  const certPdf        = document.getElementById('cert-viewer-pdf');
+
+  let certCurrentIdx = 0;
+
+  function openCertViewer(index) {
+    certCurrentIdx = index;
+    updateCertViewer();
+    certViewer.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCertViewer() {
+    certViewer.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  function updateCertViewer() {
+    const cert = certs[certCurrentIdx];
+    if (!cert) return;
+    certImage.src = window.__assetBase + cert.image;
+    certImage.alt = cert.title + ' certificate';
+    certTitle.textContent = cert.title;
+    certIssuer.textContent = cert.issuer;
+    certLabel.textContent = cert.title;
+    certCounter.textContent = (certCurrentIdx + 1) + ' / ' + certs.length;
+    if (cert.pdf) {
+      certPdf.href = window.__assetBase + cert.pdf;
+      certPdf.style.display = '';
+    } else {
+      certPdf.style.display = 'none';
+    }
+  }
+
+  document.querySelectorAll('.cert-artifact').forEach(artifact => {
+    artifact.addEventListener('click', () => {
+      openCertViewer(parseInt(artifact.dataset.cert, 10));
+    });
+  });
+
+  certClose?.addEventListener('click', closeCertViewer);
+  certBackdrop?.addEventListener('click', closeCertViewer);
+  document.querySelector('.cert-viewer-content')?.addEventListener('click', (e) => e.stopPropagation());
+
+  certPrev?.addEventListener('click', () => {
+    certCurrentIdx = (certCurrentIdx - 1 + certs.length) % certs.length;
+    updateCertViewer();
+  });
+
+  certNext?.addEventListener('click', () => {
+    certCurrentIdx = (certCurrentIdx + 1) % certs.length;
+    updateCertViewer();
+  });
+
+  let certTouchStartX = 0;
+  certViewer?.addEventListener('touchstart', (e) => {
+    certTouchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  certViewer?.addEventListener('touchend', (e) => {
+    const diff = certTouchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) certNext?.click();
+      else certPrev?.click();
     }
   }, { passive: true });
 

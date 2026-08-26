@@ -77,6 +77,48 @@ Route::get('/', function () {
                 ],
             ],
         ],
+        'certificates' => [
+            [
+                'title' => 'Computer Systems Servicing NC II',
+                'issuer' => 'TESDA',
+                'date' => 'September 2025',
+                'image' => 'certificates/Certificate_01_CSS NC2 - TESDA.png',
+                'pdf' => 'certificates/Certificate_01_CSS NC2 - TESDA.pdf',
+                'description' => 'National certification covering front-end web development, networking, and system servicing skills.',
+            ],
+            [
+                'title' => 'ICT Career Prep Essentials',
+                'issuer' => 'DICT',
+                'date' => 'June 2025',
+                'image' => 'certificates/Certificate_02_ICT Career Prep Essentials - DICT.png',
+                'pdf' => 'certificates/Certificate_02_ICT Career Prep Essentials - DICT.pdf',
+                'description' => 'Training on ICT career pathways, workplace readiness, and professional development.',
+            ],
+            [
+                'title' => 'Data Analytics and Visualization Essentials',
+                'issuer' => 'DICT',
+                'date' => 'December 2025',
+                'image' => 'certificates/Certificate_03_Data Analytics and Visualization Essentials - DICT.png',
+                'pdf' => 'certificates/Certificate_03_Data Analytics and Visualization Essentials - DICT.pdf',
+                'description' => 'Fundamentals of data analytics, interpretation, and visualization techniques.',
+            ],
+            [
+                'title' => 'Online Safety Through Netiquette',
+                'issuer' => 'DICT',
+                'date' => 'July 2026',
+                'image' => 'certificates/Certificate_04_Online Safety Through Netiquette - DICT.png',
+                'pdf' => 'certificates/Certificate_04_Online Safety Through Netiquette - DICT.pdf',
+                'description' => 'Online safety awareness and proper digital etiquette practices.',
+            ],
+            [
+                'title' => 'Stay Alert, Stay Secure: Promoting Cyber Awareness',
+                'issuer' => 'CHED',
+                'date' => 'July 2026',
+                'image' => 'certificates/Certificate_05_Stay Alert, Sptay Secure Promoting Cyber Awareness.png',
+                'pdf' => 'certificates/Certificate_05_Stay Alert, Sptay Secure Promoting Cyber Awareness.pdf',
+                'description' => 'Cybersecurity awareness training on threat prevention and safe online behavior.',
+            ],
+        ],
     ];
 
     return view('portfolio', compact('portfolio'));
