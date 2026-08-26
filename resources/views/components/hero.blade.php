@@ -1,8 +1,14 @@
 <section id="intro" class="hero section">
     <div class="hero-orb hero-orb-1"></div>
     <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
     <div class="container">
-        <div class="hero-grid">
+        <div class="hero-inner">
+            <div class="hero-photo">
+                <div class="hero-photo-ring">
+                    <img class="hero-photo-img" src="{{ asset('images/profile.jpg') }}?v={{ filemtime(public_path('images/profile.jpg')) }}" alt="Profile photo of {{ $portfolio['name'] }}">
+                </div>
+            </div>
             <div class="hero-content">
                 <span class="hero-label">BSIT Student &middot; 4th Year</span>
                 <h1 class="hero-name">{{ $portfolio['name'] }}</h1>
@@ -12,10 +18,9 @@
                     <a href="#contact" class="btn btn-ghost"><i class="fas fa-paper-plane"></i> Get in Touch</a>
                 </div>
             </div>
-            <div class="hero-photo">
-                <div class="hero-photo-ring">
-                    <img class="hero-photo-img" src="{{ asset('images/profile.jpg') }}?v={{ filemtime(public_path('images/profile.jpg')) }}" alt="Profile photo of {{ $portfolio['name'] }}">
-                </div>
+            <div class="hero-scroll">
+                <span>Explore</span>
+                <i class="fas fa-chevron-down"></i>
             </div>
         </div>
     </div>

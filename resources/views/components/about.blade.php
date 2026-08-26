@@ -20,11 +20,11 @@
                 </div>
             </div>
             <div class="about-visual reveal" style="transition-delay:.15s">
-                <div class="about-card glass" style="text-align:center">
-                    <img src="{{ asset('images/profile.jpg') }}?v={{ filemtime(public_path('images/profile.jpg')) }}" alt="Photo of {{ $portfolio['name'] }}" style="width:160px;height:160px;border-radius:50%;object-fit:cover;margin:0 auto 20px;border:3px solid var(--accent);box-shadow:0 0 24px var(--glow)">
-                    <h3 style="font-size:1.1rem;color:var(--text);margin-bottom:4px">{{ $portfolio['name'] }}</h3>
-                    <p style="font-size:.88rem;color:var(--text-dim);margin-bottom:16px">{{ $portfolio['title'] }}</p>
-                    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
+                <div class="about-card glass about-profile">
+                    <img class="about-profile-img" src="{{ asset('images/profile.jpg') }}?v={{ filemtime(public_path('images/profile.jpg')) }}" alt="Photo of {{ $portfolio['name'] }}">
+                    <h3 class="about-profile-name">{{ $portfolio['name'] }}</h3>
+                    <p class="about-profile-title">{{ $portfolio['title'] }}</p>
+                    <div class="about-profile-tags">
                         <span class="skill-tag">Sta. Rosa, Bangued, Abra</span>
                         <span class="skill-tag">{{ $portfolio['email'] }}</span>
                     </div>

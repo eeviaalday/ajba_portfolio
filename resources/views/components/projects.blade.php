@@ -8,6 +8,7 @@
             @foreach($portfolio['projects'] as $index => $project)
             <div class="project-card glass reveal" style="transition-delay:{{ $index * 0.12 }}s">
                 <div class="project-cover">
+                    <span class="project-num">PROJECT {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
                     <img src="{{ asset($project['cover']) }}" alt="{{ $project['title'] }} — {{ $project['screenshots'][0]['label'] }} screen">
                     <div class="project-cover-overlay">
                         <button class="btn btn-primary project-gallery-btn"

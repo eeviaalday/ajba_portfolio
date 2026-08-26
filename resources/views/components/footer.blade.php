@@ -2,7 +2,6 @@
     <div class="container">
         <div class="footer-line"></div>
         <div class="footer-social">
-           <!-- <a href="mailto:{{ $portfolio['email'] }}" aria-label="Send email to {{ $portfolio['name'] }}"><i class="fas fa-envelope"></i></a> --
             <a href="{{ $portfolio['social']['github'] }}" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub profile"><i class="fab fa-github"></i></a>
             <a href="{{ $portfolio['social']['facebook'] }}" target="_blank" rel="noopener noreferrer" aria-label="Visit my Facebook profile"><i class="fab fa-facebook-f"></i></a>
             <a href="{{ $portfolio['social']['tiktok'] }}" target="_blank" rel="noopener noreferrer" aria-label="Visit my TikTok profile"><i class="fab fa-tiktok"></i></a>

@@ -1,5 +1,5 @@
 /* ============================================================
-   MAIN.JS
+   MAIN.JS — Digital Constellation Portfolio
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navItems = document.querySelectorAll('.nav-links a[href^="#"]');
 
   function setActiveLink() {
-    const scrollY = window.scrollY + 100;
+    const scrollY = window.scrollY + 120;
     sections.forEach(sec => {
       const top = sec.offsetTop;
       const height = sec.offsetHeight;
