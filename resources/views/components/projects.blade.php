@@ -31,6 +31,12 @@
             </div>
         </div>
         @endforeach
+
+        <div class="projects-more reveal">
+            <a href="#more-projects" class="btn btn-primary">
+                <i class="fas fa-arrow-down"></i> View More Projects
+            </a>
+        </div>
     </div>
 </section>
 

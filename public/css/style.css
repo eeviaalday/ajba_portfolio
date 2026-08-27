@@ -322,6 +322,7 @@ a:hover{color:var(--accent-dim)}
 .about-deco-1{top:-40px;right:-40px}
 .about-deco-2{bottom:-30px;left:-30px}
 .about-resume-btn{align-self:center}
+.about-gallery-btn{align-self:center;min-width:200px}
 
 /* ============================================================
    JOURNEY — Experience + Education
@@ -388,6 +389,75 @@ a:hover{color:var(--accent-dim)}
   width:6px;height:6px;border-radius:50%;background:var(--accent);
 }
 .journey-card-desc{font-size:.9rem;color:var(--text-dim);line-height:1.7}
+
+/* ============================================================
+   TOOLS I'VE USED — Technology Wall
+   ============================================================ */
+.tools{background:var(--bg);text-align:center}
+.tools .section-label,.tools .section-heading,.tools .section-sub{margin-left:auto;margin-right:auto}
+.tools .section-sub{margin-left:auto;margin-right:auto}
+
+.tools-category{margin-bottom:48px;text-align:center}
+.tools-category:last-child{margin-bottom:0}
+
+.tools-category-label{
+  font-family:var(--font-body);font-size:.72rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.12em;color:var(--accent);
+  margin-bottom:22px;padding-bottom:10px;
+  border-bottom:1px solid var(--border);text-align:center;
+}
+
+.tools-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
+  gap:16px;justify-content:center;max-width:960px;margin:0 auto;
+}
+
+.tool-chip{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding:22px 12px 18px;border-radius:var(--radius-sm);
+  background:var(--surface);border:1px solid var(--border);
+  cursor:default;transition:var(--transition);position:relative;
+  text-align:center;
+}
+.tool-chip:hover{
+  border-color:var(--accent);
+  box-shadow:0 0 24px var(--glow),0 4px 20px var(--shadow);
+  transform:translateY(-4px);
+}
+
+.tool-icon{
+  width:40px;height:40px;display:flex;align-items:center;justify-content:center;
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+}
+.tool-chip:hover .tool-icon{transform:scale(1.18)}
+
+.tool-icon svg{width:40px;height:40px}
+.tool-icon i{font-size:36px}
+
+.tool-name{
+  font-size:.78rem;font-weight:600;color:var(--text-dim);
+  line-height:1.2;transition:color var(--transition);
+}
+.tool-chip:hover .tool-name{color:var(--text)}
+
+@media(max-width:1024px){
+  .tools-grid{grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px;max-width:760px}
+  .tool-chip{padding:18px 10px 14px}
+  .tool-icon{width:34px;height:34px}
+  .tool-icon svg,.tool-icon i{font-size:30px;width:34px;height:34px}
+}
+@media(max-width:768px){
+  .tools-grid{grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px;max-width:560px}
+  .tool-chip{padding:16px 8px 12px}
+  .tool-icon{width:30px;height:30px}
+  .tool-icon svg,.tool-icon i{font-size:26px;width:30px;height:30px}
+  .tool-name{font-size:.72rem}
+}
+@media(max-width:480px){
+  .tools-grid{grid-template-columns:repeat(3,1fr);gap:8px;max-width:100%}
+  .tool-chip{padding:14px 6px 10px}
+}
 
 /* ============================================================
    PROJECTS — Featured Work (Panda Coders Style)
@@ -489,6 +559,105 @@ a:hover{color:var(--accent-dim)}
 .gallery-label{font-size:.88rem;font-weight:600;color:var(--text)}
 .gallery-counter{font-size:.80rem;color:var(--text-dim);font-weight:500}
 
+/* My Gallery (About) */
+.about-gallery-content{max-width:920px}
+.about-gallery-image-wrap{background:rgba(0,0,0,.08)}
+.about-gallery-image{max-height:62vh;object-fit:contain}
+.about-gallery-footer{gap:16px;flex-wrap:wrap}
+.about-gallery-footer .gallery-label{font-size:.95rem;text-align:center;flex:1}
+
+/* ============================================================
+   ADDITIONAL PROJECTS & ACTIVITIES
+   ============================================================ */
+.more-projects{background:var(--bg)}
+.more-projects-header{text-align:center;margin-bottom:24px}
+.more-projects-header .section-sub{margin-left:auto;margin-right:auto}
+
+.projects-more{text-align:center;margin-top:16px}
+
+/* Activity cards */
+.more-java-grid{
+  max-width:960px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+}
+.more-java-card{
+  display:flex;flex-direction:column;padding:16px;
+  transition:var(--transition);
+}
+.more-java-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg),0 0 24px var(--glow)}
+.more-java-img{
+  position:relative;border-radius:var(--radius-xs);overflow:hidden;cursor:zoom-in;
+  border:1px solid var(--border);margin-bottom:14px;
+}
+.more-java-img img{width:100%;display:block;transition:transform .6s ease}
+.more-java-img:hover img{transform:scale(1.04)}
+.more-java-overlay{
+  position:absolute;inset:0;background:hsla(268,30%,8%,.45);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity var(--transition);
+}
+.more-java-img:hover .more-java-overlay{opacity:1}
+.more-java-overlay i{color:#fff;font-size:1.4rem}
+.more-gallery-hint{
+  color:#fff;font-size:.82rem;font-weight:700;
+  display:inline-flex;align-items:center;gap:8px;
+  background:hsla(268,60%,55%,.85);padding:10px 18px;border-radius:24px;
+  box-shadow:0 0 20px var(--glow);
+}
+.more-java-info{padding:4px 6px 6px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.more-java-title{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.more-lang-badge{
+  display:inline-block;padding:4px 12px;border-radius:16px;font-size:.68rem;
+  font-weight:700;background:var(--accent-bg);color:var(--accent);
+  border:1px solid var(--border-glow);margin-bottom:10px;
+}
+.more-java-desc{font-size:.85rem;color:var(--text-dim);line-height:1.7;margin-bottom:14px}
+.more-gallery-btn{width:auto;min-width:180px}
+
+/* Additional projects lightbox */
+.more-lightbox{
+  position:fixed;inset:0;z-index:1000;display:flex;align-items:center;
+  justify-content:center;padding:20px;
+}
+.more-lightbox[hidden]{display:none}
+.more-lightbox-backdrop{
+  position:absolute;inset:0;
+  background:hsla(268,35%,5%,.88);backdrop-filter:blur(12px);
+}
+.more-lightbox-content{
+  position:relative;z-index:1;
+  background:var(--surface);border:1px solid var(--border-glow);
+  border-radius:var(--radius);box-shadow:var(--shadow-lg),0 0 40px var(--glow);
+  max-width:920px;width:100%;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;
+}
+.more-lightbox-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 24px 12px;gap:12px;
+}
+.more-lightbox-title{font-size:1.05rem;font-weight:700;color:var(--text);margin:0}
+.more-lightbox-close{
+  width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);
+  background:var(--surface);color:var(--text-dim);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+  transition:var(--transition);flex-shrink:0;
+}
+.more-lightbox-close:hover{color:var(--accent);border-color:var(--accent);box-shadow:0 0 16px var(--glow)}
+.more-lightbox-body{display:flex;align-items:center;gap:10px;padding:0 14px;flex:1;min-height:0}
+.more-lightbox-nav{
+  width:42px;height:42px;border-radius:50%;border:1.5px solid var(--border);
+  background:var(--surface);color:var(--text-dim);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:.9rem;
+  transition:var(--transition);flex-shrink:0;
+}
+.more-lightbox-nav:hover{color:var(--accent);border-color:var(--accent);box-shadow:0 0 16px var(--glow)}
+.more-lightbox-image-wrap{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  min-height:0;overflow:hidden;border-radius:var(--radius-xs);
+}
+.more-lightbox-image{max-width:100%;max-height:60vh;object-fit:contain;border-radius:var(--radius-xs)}
+.more-lightbox-footer{padding:12px 24px 20px;text-align:center}
+.more-lightbox-counter{font-size:.80rem;color:var(--text-dim);font-weight:500}
+
 /* ============================================================
    CERTIFICATES — Horizontal Carousel
    ============================================================ */
@@ -563,12 +732,36 @@ a:hover{color:var(--accent-dim)}
    CONTACT — Clean Editorial Grid
    ============================================================ */
 .contact{background:var(--bg-alt)}
-.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:start}
-.contact-info{display:flex;flex-direction:column;gap:24px}
+.contact-header{text-align:center;margin-bottom:44px}
+.contact-header .section-sub{margin-left:auto;margin-right:auto}
+
+.contact-actions{
+  display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:56px;
+}
+
+.contact-copy-btn{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:14px 24px;cursor:pointer;min-width:200px;justify-content:center;
+}
+.contact-copy-label{display:inline-flex;align-items:center;gap:8px}
+.contact-copy-label i{font-size:1rem}
+.contact-copy-box{font-size:1.1rem}
+.contact-copy-btn.copied{
+  border-color:#22c55e;box-shadow:0 0 20px rgba(34,197,94,.25);
+}
+.contact-copy-btn.copied .contact-copy-label{color:#22c55e}
+
+.contact-grid{
+  max-width:980px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+  align-items:start;
+}
+.contact-info-col{display:flex;flex-direction:column;gap:24px}
+
 .contact-block{padding:28px}
 .contact-block-label{
   font-size:.72rem;font-weight:700;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:12px;
+  text-transform:uppercase;color:var(--accent);margin-bottom:14px;
 }
 .contact-block-value{font-size:.95rem;color:var(--text);font-weight:500;line-height:1.6}
 .contact-block-value a{color:var(--text);transition:color var(--transition)}
@@ -583,22 +776,13 @@ a:hover{color:var(--accent-dim)}
 }
 .contact-social-link:first-child{border-top:1px solid var(--border)}
 .contact-social-link:hover{color:var(--accent);padding-left:8px}
-.contact-social-link i{color:var(--text-dim);transition:var(--transition)}
-.contact-social-link:hover i{color:var(--accent)}
+.contact-social-link span{display:inline-flex;align-items:center;gap:12px}
+.contact-social-link span i{width:20px;text-align:center}
+.contact-social-link .fas{color:var(--text-dim);transition:var(--transition)}
+.contact-social-link:hover .fas{color:var(--accent)}
+.contact-social-link:hover span i{color:var(--accent)}
 
-.contact-form-wrap{padding:40px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.form-field{margin-bottom:18px}
-.form-field label{display:block;font-size:.78rem;font-weight:600;color:var(--text-dim);margin-bottom:6px}
-.form-field input,.form-field textarea{
-  width:100%;padding:12px 16px;border:1.5px solid var(--border);
-  border-radius:var(--radius-xs);background:var(--bg);color:var(--text);
-  font-size:.9rem;font-family:inherit;transition:var(--transition);
-}
-.form-field input:focus,.form-field textarea:focus{
-  outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-bg);
-}
-.form-field textarea{resize:vertical;min-height:120px}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* ============================================================
    GITHUB CTA
@@ -696,8 +880,8 @@ a:hover{color:var(--accent-dim)}
 /* ============================================================
    SCROLL REVEAL
    ============================================================ */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
+.js .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal,.js .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* ============================================================
    REDUCED MOTION
@@ -734,7 +918,7 @@ a:hover{color:var(--accent-dim)}
   .project-feature{grid-template-columns:1fr;gap:32px;padding:32px}
   .project-feature:nth-child(even){direction:ltr}
   .project-num{font-size:3.5rem}
-  .contact-grid{grid-template-columns:1fr;gap:40px}
+  .contact-grid{grid-template-columns:1fr;gap:24px}
   .section{padding:100px 0}
 }
 @media(max-width:768px){
@@ -767,7 +951,12 @@ a:hover{color:var(--accent-dim)}
   .journey-card{padding:24px 20px}
   .journey-card-title{font-size:1.15rem}
   .project-feature{padding:24px}
-  .contact-form-wrap{padding:28px 22px}
+  .contact-copy-btn{min-width:0;width:100%}
+  .contact-actions{flex-direction:column;align-items:stretch}
+  .more-java-grid{max-width:100%;grid-template-columns:1fr}
+  .more-lightbox-content{max-height:95vh;border-radius:var(--radius-sm)}
+  .more-lightbox-nav{width:36px;height:36px;font-size:.82rem}
+  .more-lightbox-image{max-height:50vh}
 }
 @media(max-width:480px){
   .hero-name{font-size:2.2rem}
@@ -777,4 +966,5 @@ a:hover{color:var(--accent-dim)}
   .hero-photo{width:180px;height:180px}
   .project-num{font-size:2.8rem}
   .cert-card-title{font-size:1.2rem}
+}
 }
