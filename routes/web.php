@@ -125,6 +125,19 @@ Route::get('/', function () {
                     ['image' => 'images/RHUManagementSystem_05_Backup&Restore.png', 'label' => 'Backup & Restore'],
                 ],
             ],
+            [
+                'title' => 'Barangay Document Request and Public Information System',
+                'language' => 'Laravel (PHP)',
+                'description' => 'A web-based barangay information system that lets residents request documents online and stay informed through community announcements, with a home portal, community activities view, and an admin dashboard for managing requests and barangay records. The system supports document request tracking, resident-facing public information, and administrative oversight of barangay operations. It was built with Laravel (PHP), MySQL, Tailwind CSS, and Alpine.js.',
+                'github' => 'https://github.com/eeviaalday/BDRIPS.git',
+                'cover' => 'images/BDRPIS_Login.png',
+                'screenshots' => [
+                    ['image' => 'images/BDRPIS_Login.png', 'label' => 'Login'],
+                    ['image' => 'images/BDRPIS_Home.png', 'label' => 'Home'],
+                    ['image' => 'images/BDRPIS_Community Activities.png', 'label' => 'Community Activities'],
+                    ['image' => 'images/BDRPIS_Admin Dashboard.png', 'label' => 'Admin Dashboard'],
+                ],
+            ],
         ],
         'additional_projects' => [
             'java' => [
@@ -165,6 +178,17 @@ Route::get('/', function () {
                     ['image' => 'images/MS_05_SearchRec_Manage.png', 'label' => 'Search & Manage Records'],
                 ],
             ],
+            'flutter' => [
+                'title' => 'Student Task Manager',
+                'language' => 'Flutter',
+                'description' => 'A mobile task management application built with Flutter that helps students organize, track, and manage their tasks and deadlines. The app provides a simple interface for creating and managing tasks to support everyday student productivity. It was developed using Flutter.',
+                'screenshots' => [
+                    ['image' => 'images/1Flutter_StudentTaskManager.jpg', 'label' => 'Screenshot 1'],
+                    ['image' => 'images/2Flutter_StudentTaskManager.jpg', 'label' => 'Screenshot 2'],
+                    ['image' => 'images/3Flutter_StudentTaskManager.jpg', 'label' => 'Screenshot 3'],
+                    ['image' => 'images/4Flutter_StudentTaskManager.jpg', 'label' => 'Screenshot 4'],
+                ],
+            ],
         ],
         'certificates' => [
             [
@@ -172,7 +196,6 @@ Route::get('/', function () {
                 'issuer' => 'TESDA',
                 'date' => 'September 2025',
                 'image' => 'certificates/Certificate_01_CSS NC2 - TESDA.png',
-                'pdf' => 'certificates/Certificate_01_CSS NC2 - TESDA.pdf',
                 'description' => 'National certification covering front-end web development, networking, and system servicing skills.',
             ],
             [
@@ -180,7 +203,6 @@ Route::get('/', function () {
                 'issuer' => 'DICT',
                 'date' => 'June 2025',
                 'image' => 'certificates/Certificate_02_ICT Career Prep Essentials - DICT.png',
-                'pdf' => 'certificates/Certificate_02_ICT Career Prep Essentials - DICT.pdf',
                 'description' => 'Training on ICT career pathways, workplace readiness, and professional development.',
             ],
             [
@@ -188,7 +210,6 @@ Route::get('/', function () {
                 'issuer' => 'DICT',
                 'date' => 'December 2025',
                 'image' => 'certificates/Certificate_03_Data Analytics and Visualization Essentials - DICT.png',
-                'pdf' => 'certificates/Certificate_03_Data Analytics and Visualization Essentials - DICT.pdf',
                 'description' => 'Fundamentals of data analytics, interpretation, and visualization techniques.',
             ],
             [
@@ -196,7 +217,6 @@ Route::get('/', function () {
                 'issuer' => 'DICT',
                 'date' => 'July 2026',
                 'image' => 'certificates/Certificate_04_Online Safety Through Netiquette - DICT.png',
-                'pdf' => 'certificates/Certificate_04_Online Safety Through Netiquette - DICT.pdf',
                 'description' => 'Online safety awareness and proper digital etiquette practices.',
             ],
             [
@@ -204,8 +224,28 @@ Route::get('/', function () {
                 'issuer' => 'CHED',
                 'date' => 'July 2026',
                 'image' => 'certificates/Certificate_05_Stay Alert, Sptay Secure Promoting Cyber Awareness.png',
-                'pdf' => 'certificates/Certificate_05_Stay Alert, Sptay Secure Promoting Cyber Awareness.pdf',
                 'description' => 'Cybersecurity awareness training on threat prevention and safe online behavior.',
+            ],
+            [
+                'title' => 'Exploring Programs, Funding, & Opportunities for Aspiring Startups',
+                'issuer' => 'DOST',
+                'date' => 'September 2026',
+                'image' => 'certificates/Certificate_06_Exploring Programs, Funding, & Opportunities for Aspiring Startups  - DOST.png',
+                'description' => 'Participation in Startup Now Cordillera: Exploring Programs, Funding, and Opportunities for Aspiring Startups organized by DOST.',
+            ],
+            [
+                'title' => 'Introduction to Modern AI',
+                'issuer' => 'DICT-ITU DTC Initiative',
+                'date' => 'October 2026',
+                'image' => 'certificates/Certificate_07_Introduction_to_Modern_AI.png',
+                'description' => 'Completion of Introduction to Modern AI offered through the DICT-ITU DTC Initiative and Cisco Networking Academy.',
+            ],
+            [
+                'title' => 'Understanding Startups',
+                'issuer' => 'DICT',
+                'date' => 'September 2026',
+                'image' => 'certificates/Certificate_08_Understanding Startups - DICT.png',
+                'description' => 'Certificate on Understanding Startups issued by DICT.',
             ],
         ],
         'tools' => [

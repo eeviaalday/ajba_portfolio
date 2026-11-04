@@ -40,6 +40,24 @@
                     </button>
                 </div>
             </div>
+
+            @php $fl = $portfolio['additional_projects']['flutter']; @endphp
+            <div class="more-java-card glass reveal" style="transition-delay:{{ (count($portfolio['additional_projects']['java']) + 1) * 0.08 }}s">
+                <div class="more-java-img" data-lightbox="flutter" data-index="0">
+                    <img src="{{ asset($fl['screenshots'][0]['image']) }}" alt="{{ $fl['title'] }}">
+                    <div class="more-java-overlay more-java-overlay--gallery">
+                        <span class="more-gallery-hint"><i class="fas fa-images"></i> View Gallery</span>
+                    </div>
+                </div>
+                <div class="more-java-info">
+                    <h4 class="more-java-title">{{ $fl['title'] }}</h4>
+                    <span class="more-lang-badge">{{ $fl['language'] }}</span>
+                    <p class="more-java-desc">{{ $fl['description'] }}</p>
+                    <button type="button" class="btn btn-primary more-gallery-btn" data-lightbox="flutter" data-index="0">
+                        <i class="fas fa-images"></i> View Gallery
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </section>

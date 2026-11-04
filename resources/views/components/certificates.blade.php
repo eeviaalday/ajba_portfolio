@@ -23,11 +23,6 @@
                             @if($cert['description'])
                             <p class="cert-card-desc">{{ $cert['description'] }}</p>
                             @endif
-                            @if($cert['pdf'])
-                            <a class="cert-card-pdf" href="{{ asset($cert['pdf']) }}" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-file-pdf"></i> View PDF
-                            </a>
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -81,9 +76,6 @@
                 <span class="cert-viewer-label" id="cert-viewer-label"></span>
                 <span class="cert-viewer-counter" id="cert-viewer-counter"></span>
             </div>
-            <a class="btn btn-primary cert-viewer-pdf" id="cert-viewer-pdf" href="#" target="_blank" rel="noopener noreferrer" style="display:none">
-                <i class="fas fa-file-pdf"></i> View Original PDF
-            </a>
         </div>
     </div>
 </div>

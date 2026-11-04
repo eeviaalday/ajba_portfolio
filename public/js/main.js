@@ -134,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const certVIssuer    = document.getElementById('cert-viewer-issuer');
   const certVLabel     = document.getElementById('cert-viewer-label');
   const certVCounter   = document.getElementById('cert-viewer-counter');
-  const certVPdf       = document.getElementById('cert-viewer-pdf');
 
   let certViewIdx = 0;
 
@@ -159,12 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
     certVIssuer.textContent = cert.issuer;
     certVLabel.textContent = cert.title;
     certVCounter.textContent = (certViewIdx + 1) + ' / ' + certTotal;
-    if (cert.pdf) {
-      certVPdf.href = window.__assetBase + cert.pdf;
-      certVPdf.style.display = '';
-    } else {
-      certVPdf.style.display = 'none';
-    }
   }
 
   document.querySelectorAll('.cert-card').forEach(card => {
@@ -385,20 +378,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const ms = additional.msaccess;
     return ms ? ms.screenshots : [];
   }
+  function flutterItems() {
+    const fl = additional.flutter;
+    return fl ? fl.screenshots : [];
+  }
   function getItems() {
-    return moreType === 'additional' ? javaItems() : accessItems();
+    if (moreType === 'additional') return javaItems();
+    if (moreType === 'flutter') return flutterItems();
+    return accessItems();
   }
 
   function openMoreLightbox(type, index) {
-    const items = type === 'additional' ? javaItems() : accessItems();
+    const items = type === 'additional' ? javaItems() : (type === 'flutter' ? flutterItems() : accessItems());
     if (!items.length) return;
     moreType = type;
     moreIndex = index;
     const item = items[moreIndex];
     moreImage.src = window.__assetBase + item.image;
-    moreTitle.textContent = type === 'additional' ? item.title : (additional.msaccess.title + ' \u2014 ' + item.label);
+    if (type === 'additional') {
+      moreTitle.textContent = item.title;
+    } else if (type === 'flutter') {
+      moreTitle.textContent = additional.flutter.title + ' \u2014 ' + item.label;
+    } else {
+      moreTitle.textContent = additional.msaccess.title + ' \u2014 ' + item.label;
+    }
     moreCounter.textContent = (moreIndex + 1) + ' / ' + items.length;
-    const multi = type === 'access';
+    const multi = type !== 'additional';
     morePrev.style.visibility = multi ? 'visible' : 'hidden';
     moreNext.style.visibility = multi ? 'visible' : 'hidden';
     moreCounter.style.visibility = multi ? 'visible' : 'hidden';
@@ -416,7 +421,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!items.length) return;
     const item = items[moreIndex];
     moreImage.src = window.__assetBase + item.image;
-    moreTitle.textContent = moreType === 'additional' ? item.title : (additional.msaccess.title + ' \u2014 ' + item.label);
+    if (moreType === 'additional') {
+      moreTitle.textContent = item.title;
+    } else if (moreType === 'flutter') {
+      moreTitle.textContent = additional.flutter.title + ' \u2014 ' + item.label;
+    } else {
+      moreTitle.textContent = additional.msaccess.title + ' \u2014 ' + item.label;
+    }
     moreCounter.textContent = (moreIndex + 1) + ' / ' + items.length;
   }
 
@@ -425,6 +436,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   document.querySelectorAll('[data-lightbox="access"]').forEach(el => {
     el.addEventListener('click', () => openMoreLightbox('access', parseInt(el.dataset.index, 10)));
+  });
+  document.querySelectorAll('[data-lightbox="flutter"]').forEach(el => {
+    el.addEventListener('click', () => openMoreLightbox('flutter', parseInt(el.dataset.index, 10)));
   });
   moreClose?.addEventListener('click', closeMoreLightbox);
   moreBackdrop?.addEventListener('click', closeMoreLightbox);

@@ -13,11 +13,18 @@
                 <h3 class="project-title">{{ $project['title'] }}</h3>
                 <span class="project-lang">{{ $project['language'] }}</span>
                 <p class="project-desc">{{ $project['description'] }}</p>
-                <button class="btn btn-primary project-gallery-btn"
-                    data-project="{{ $index }}"
-                    aria-label="View {{ $project['title'] }} gallery">
-                    <i class="fas fa-images"></i> View Gallery
-                </button>
+                <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+                    <button class="btn btn-primary project-gallery-btn"
+                        data-project="{{ $index }}"
+                        aria-label="View {{ $project['title'] }} gallery">
+                        <i class="fas fa-images"></i> View Gallery
+                    </button>
+                    @if(!empty($project['github']))
+                    <a href="{{ $project['github'] }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                    @endif
+                </div>
             </div>
             <div class="project-img-wrap" data-project="{{ $index }}">
                 <img src="{{ asset($project['cover']) }}" alt="{{ $project['title'] }} — {{ $project['screenshots'][0]['label'] }} screen">

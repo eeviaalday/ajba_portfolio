@@ -34,7 +34,7 @@ The site is **fully client-rendered from static data** — there is no database,
 | **Journey** | Tabbed **Experience** (3 entries) and **Education** (2 entries) timelines |
 | **Tools I've Used** | Technology wall with 19 tools across 4 categories (Programming & Scripting, Databases, Development & Version Control, Multimedia & UI/UX Design) |
 | **Certificates** | Carousel of 5 certificates with a full-view modal and links to downloadable PDFs |
-| **Featured Projects** | 3 management-system projects, each with a screenshot gallery |
+| **Featured Projects** | 4 management-system projects, each with a screenshot gallery |
 | **Additional Projects & Activities** | 4 Java console applications plus a Microsoft Access database system, each with a lightbox gallery |
 | **GitHub** | Link to the profile's GitHub repository |
 | **Contact** | Copy-to-clipboard **Email** and **Phone** buttons, location, and social media links |
