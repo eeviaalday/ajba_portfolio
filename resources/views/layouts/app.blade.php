@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Portfolio')</title>
-    <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32.png') }}">
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
