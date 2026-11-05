@@ -31,7 +31,7 @@
       "dest": "/public/build/$1"
     },
     {
-      "src": "^/(.*\\.(ico|png|jpg|jpeg|svg|webp|gif|woff|woff2|ttf|map))$",
+      "src": "^/(.*\\.(ico|png|jpg|jpeg|svg|webp|gif|woff|woff2|ttf|map|pdf))$",
       "dest": "/public/$1"
     },
     {

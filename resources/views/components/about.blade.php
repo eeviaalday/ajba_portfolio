@@ -7,7 +7,7 @@
                 <div class="about-img-wrap">
                     <img class="about-img" src="{{ asset('images/profile.jpg') }}?v={{ filemtime(public_path('images/profile.jpg')) }}" alt="Photo of {{ $portfolio['name'] }}">
                 </div>
-                <a href="{{ asset('files/Alday Resume.pdf') }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary about-resume-btn">
+                <a href="{{ asset('files/alday-resume.pdf') }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary about-resume-btn">
                     <i class="fas fa-file-pdf"></i> View Resume
                 </a>
                 <button type="button" class="btn btn-ghost about-gallery-btn" id="about-gallery-btn">
